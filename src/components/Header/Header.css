@@ -1,0 +1,23 @@
+.mobile__device__header {
+  width: 100%;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 9999999;
+}
+.mobile__device__header__container {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  background-color: var(--bar__color);
+  font-family: "Roboto Condensed", sans-serif;
+  height: 6.5vh;
+  align-items: center;
+  padding: 0px 10px;
+}
+
+.header__right__part {
+  display: flex;
+  gap: 20px;
+  align-items: center;
+}
