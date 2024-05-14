@@ -1,0 +1,25 @@
+.mobile__device__footer {
+  position: fixed;
+  left: 0;
+  bottom: 0;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  width: 100%;
+}
+
+.mobile__device__footer__container {
+  display: flex;
+  flex-direction: row;
+  padding: 10px;
+  width: 100%;
+  justify-content: space-between;
+  background-color: var(--bar__color);
+  font-family: "Roboto Condensed", sans-serif;
+}
+.mobile__device__footer__item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
