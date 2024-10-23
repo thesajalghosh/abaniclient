@@ -1,0 +1,76 @@
+.register__page__whole__container{
+    background-color: var(--register__login__background);
+    width: 100vw;
+    height: 100vh;
+    font-family: "Roboto Condensed", sans-serif;
+    color: var( --light__text__color);
+    display: flex;
+    justify-content: space-around;
+    flex-direction: column;
+   
+  
+}
+
+.register__page__header{
+    font-size: 1.3rem;
+    color: var( --more__strong__text__color);
+    padding-top: 30px;
+    padding-left: 15px;
+}
+
+.register__form{
+    margin-top: 15px;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+}
+
+.form__ele{
+    margin-top: 15px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    color: var( --strong__text__color);
+
+}
+.form__ele input{
+    width: 85vw;
+    height: 4vh;
+    background-color: blueviolet;
+    border: none;
+    border-radius: 3px;
+}
+.form__ele input:focus{
+    outline: none;
+}
+.button__container{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    margin-top: 5vh;
+}
+.btn__design{
+    width: 85vw;
+    height: 5vh;
+ background-color: bisque;
+ border: none;
+ border-radius: 5px;
+ font-size: 1rem;
+ font-family: "Roboto Condensed", sans-serif;
+ 
+}
+.open__login__page{
+    margin-top: 50px;
+    margin-top: 50px;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+}
+
+.open__login__page span{
+    color: var(  --more__strong__text__color);
+    margin-bottom: 10px;
+
+}

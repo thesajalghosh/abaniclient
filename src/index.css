@@ -18,4 +18,8 @@ code {
   --secondary-color: #2ecc71;
   --font-size: 16px;
   --bar__color: rgb(238 237 237);
+  --light__text__color:rgb(145, 143, 143);
+  --strong__text__color:rgb(197, 196, 196);
+  --more__strong__text__color:white;
+  --register__login__background:rgb(46, 12, 78);
 }
