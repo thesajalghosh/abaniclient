@@ -74,3 +74,17 @@
     margin-bottom: 10px;
 
 }
+.login__page__modal__footer{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.login__page__modal__footer button{
+    width: 70%;
+    padding: 4px;
+    font-size: 1rem;
+    border: 0.5px solid var(  --border__color);
+    border-radius: 4px;
+    background-color: var();
+}

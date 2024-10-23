@@ -11,7 +11,7 @@
 .mobile__device__footer__container {
   display: flex;
   flex-direction: row;
-  padding: 10px;
+  padding: 10px 10px;
   width: 100%;
   justify-content: space-between;
   background-color: var(--bar__color);
@@ -22,4 +22,22 @@
   flex-direction: column;
   align-items: center;
   justify-content: center;
+  position: relative;
+}
+.mobile__device__name{
+  font-size: 0.7rem;
+}
+.total_cart_count{
+  position: absolute;
+  background-color: red;
+  z-index: 1000000;
+  color: var(  --more__strong__text__color);
+  right:-15px;
+  top: -6px;
+  height: 20px;
+  width: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 50%;
 }

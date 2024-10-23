@@ -1,0 +1,34 @@
+.whole__moadal__component{
+    background-color: rgba(0, 0, 0, 0.632);
+    position: fixed;
+    width: 100vw;
+    height: 100vh;
+    left: 0;
+    top: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.modal__content{
+    width: 95vw;
+    height: auto;
+    background-color: white;
+    border-radius: 4px;
+    color: var(--strong__black__color);
+    font-family: "Roboto Condensed", sans-serif;
+}
+.modal__header{
+    padding: 10px 10px;
+    border-bottom: 0.5px solid rgba(123, 123, 123, 0.483);
+}
+.modal__body{
+    padding: 10px 10px;
+}
+.modal__footer{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 10px;
+    
+}

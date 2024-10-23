@@ -1,0 +1,108 @@
+.profile__account__back__button {
+    display: flex;
+    gap: 20px;
+    padding: 10px;
+    font-size: 1.4rem;
+    font-family: "Nunito Sans", sans-serif;
+    color: var(--srtong__font__color);
+    font-weight: 600;
+    margin-top: 30px;
+  }
+  .profile__account__details__container {
+    display: flex;
+    flex-direction: column;
+    border: 0.5px solid var(--light_border_color);
+    margin: 10px;
+    border-radius: 10px;
+    margin-top: 70px;
+  }
+  .profile__account__details__container__upperPart {
+    display: flex;
+
+    padding: 10px 0px;
+  }
+  .upper__part__icon {
+    flex-basis: 25%;
+    text-align: center;
+  }
+  .upper__part__user__details {
+    padding: 5px 10px;
+    display: flex;
+    flex-direction: column;
+  }
+  .upper__part__user__details span {
+    color: var(--light__font__color);
+    font-size: 1rem;
+    font-family: "Nunito Sans", sans-serif;
+    font-weight: 600;
+  }
+  .upper__part__user__name {
+    color: var(--srtong__font__color);
+    font-family: "Nunito Sans", sans-serif;
+    font-size: 1.4rem;
+  }
+  .profile__account__details__container__lowerPart {
+    display: flex;
+    padding: 10px 15px;
+    gap: 25px;
+  }
+  .lower__part__left {
+    flex-basis: 20%;
+    text-align: center;
+    background-color: #353434bf;
+    font-family: "Nunito Sans", sans-serif;
+    font-weight: 600;
+    color: var(--srtong__font__color);
+    padding: 5px 10px;
+    border-radius: 5px;
+  }
+  .lower__part__right {
+    font-family: "Nunito Sans", sans-serif;
+    color: var(--light__font__color);
+    font-weight: 600;
+    font-size: 1.1rem;
+  }
+  
+  .profile__logout__container {
+    display: flex;
+    padding: 10px 15px;
+    margin: 15px;
+    gap: 10px;
+    border: 0.5px solid var(--very__light__border);
+    border-radius: 10px;
+    color: red;
+    font-weight: 600;
+    font-family: "Nunito Sans", sans-serif;
+    font-size: 1.1rem;
+  }
+  .profile__update__container {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    padding: 5px 10px;
+    gap: 10px;
+    border: 1px solid var(--very__light__border);
+    margin: 15px;
+    font-family: "Nunito Sans", sans-serif;
+    color: var(--srtong__font__color);
+    border-radius: 5px;
+  }
+  .logout__footer__two__button {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 10px;
+    margin-bottom: 10px;
+  }
+  .logout__footer__two__button button {
+    height: 5vh;
+    width: 40vw;
+    border: none;
+    font-size: 1.2rem;
+    font-family: "Nunito Sans", sans-serif;
+    color: var(--srtong__font__color);
+    background-color: var(--button__color);
+  }
+  .logout__footer__two__button button:first-child {
+    background-color: var(--delete__button);
+  }

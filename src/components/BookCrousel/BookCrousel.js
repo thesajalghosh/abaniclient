@@ -30,8 +30,8 @@ const BookCrousel = () => {
           delay: 2000, // Delay between slides in milliseconds
           disableOnInteraction: false, // Continue autoplay after user interactions
         }}
-        onSwiper={(swiper) => console.log(swiper)}
-        onSlideChange={() => console.log("slide change")}
+        // onSwiper={(swiper) => console.log(swiper)}
+        // onSlideChange={() => console.log("slide change")}
       >
         <SwiperSlide>
           <div className="swiper__slide__element">Slide 1</div>

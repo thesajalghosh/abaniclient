@@ -1,18 +1,29 @@
-import React from "react";
+import React, { Suspense, lazy } from "react";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
+import Loader from "./components/Loader/Loader";
 import Layout from "./layout/Layout";
-import HomePage from "./pages/HomePage";
-import Login from "./pages/Login/Login";
-import Register from "./pages/Registration/Register";
+import AccountPage from "./pages/AccountPage/AccountPage";
+import BookingsPage from "./pages/BookingsPage/BookingsPage";
+import CartPage from "./pages/CartPage/CartPage";
+
+// Lazy load your components
+const CategoryProductPage = lazy(() => import("./pages/CategoryProductPage/CategoryProductPage"));
+const HomePage = lazy(() => import("./pages/HomePage/HomePage"));
+const Login = lazy(() => import("./pages/Login/Login"));
+const Register = lazy(() => import("./pages/Registration/Register"));
+
+// const Loader = () => <div>Loading...</div>;
 
 const App = () => {
   return (
     <BrowserRouter>
-      <Routes>
-        <Route path="/register" element={<Register />} />
-        <Route path="/login" element={<Login/>}/>
-        <Route path="/*" element={<LayoutWrapper />} />
-      </Routes>
+      <Suspense fallback={<Loader />}>
+        <Routes>
+          <Route path="/register" element={<Register />} />
+          <Route path="/login" element={<Login />} />
+          <Route path="/*" element={<LayoutWrapper />} />
+        </Routes>
+      </Suspense>
     </BrowserRouter>
   );
 };
@@ -20,10 +31,15 @@ const App = () => {
 const LayoutWrapper = () => {
   return (
     <Layout>
-      <Routes>
-        <Route path="/" element={<HomePage />} />
-        
-      </Routes>
+      <Suspense fallback={<Loader />}>
+        <Routes>
+          <Route path="/" element={<HomePage />} />
+          <Route path="/category-product/:cid" element={<CategoryProductPage />} />
+          <Route path="/cart-page" element={<CartPage />} />
+          <Route path="/account" element={<AccountPage/>} />
+          <Route path="/bookings" element={<BookingsPage/>} />
+        </Routes>
+      </Suspense>
     </Layout>
   );
 };

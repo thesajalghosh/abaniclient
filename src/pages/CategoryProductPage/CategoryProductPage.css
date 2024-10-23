@@ -1,0 +1,116 @@
+.category_product_page_whole_container{
+    margin-top: 40px;
+    width: 100%;
+    margin-bottom: 70px;
+}
+.category_product_page_header{
+    width: 100%;
+    border-bottom: 8px solid var(--most_light_border);
+}
+.category_product_header_image{
+    width: 100%;
+}
+.category_product_header_image img{
+    width: 100vw;
+}
+.category_header_details{
+  margin: 20px 10px;
+}
+.category_header_title{
+    font-size: 1.8rem;
+    font-family: "Roboto Condensed", sans-serif;
+}
+.category_header_rating{
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-left: 10px;
+}
+.category_header_rating span{
+    border-bottom: 3px dashed var(--border__color);
+}
+.category__product__page__elements{
+    margin: 10px;
+}
+.category_product__card{
+    padding: 10px;
+    border-bottom: 1px solid var(  --light_border_color);
+    padding-bottom: 15px;
+}
+.category_product__card:last-child{
+    border: none;
+}
+
+.category_service_tag{
+    color: rgb(7, 208, 7);
+    font-size: 1rem;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+.category_product_name_add{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    margin-top: 7px;
+
+}
+.category_product_name_left{
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+.category_product_name_add span{
+    font-size: 1.2rem;
+    font-family: "Roboto Condensed", sans-serif;
+}
+.add_to_cart_section button{
+    font-size: 1rem;
+    padding: 5px 20px;
+    background-color: none;
+    background: none;
+    border: 0.5px solid var( --button_border_color);
+    border-radius: 5px;
+    color: var(  --button_text_color);
+    outline: none;
+}
+.add_to_cart_section button:focus{
+    outline: none;
+
+    box-shadow: none;
+}
+.add_button_active button{
+    background-color: var(--button_background);
+    color: var( --more__strong__text__color);
+}
+.category_product_rating{
+    display: flex;
+    flex-direction: row;
+    gap: 10px;
+    align-items: center;
+    font-size: 0.9rem;
+}
+.category_product_rating div{
+ border-bottom: 3px dashed var( --light_border_color);
+}
+.category_product_price{
+    display: flex;
+    /* justify-content: center; */
+    align-items: center;
+}
+.category_product_price_time{
+    display: flex;
+    gap: 10px;
+    margin-top: 5px;
+    align-items: center;
+    
+}
+.category_product_price{
+    font-size: 1.1rem;
+}
+.category_product__des{
+    margin-top: 4px;
+    font-size: 0.9rem;
+    font-family: "Roboto Condensed", sans-serif;
+    color:  var(  --light__text__color);
+}

@@ -1,0 +1,48 @@
+.whole_booking_container{
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    padding: 10px;
+    margin-top: 60px;
+    overflow-y: scroll;
+    margin-bottom: 60px;
+}
+.order_element_container{
+    background-color: rgba(203, 204, 204, 0.517);
+    border-radius: 5px;
+    padding: 10px;
+}
+.booking_date_slot{
+    display: flex;
+    justify-content: space-between;
+}
+.booking_date{
+    display: flex;
+    flex-direction: column;
+}
+.booked_slot{
+    display: flex;
+    flex-direction: column;
+}
+.item_whole_container{
+    margin: 5px 0px;
+    border-bottom: 0.5px dashed var(  --light_black_color);
+    padding: 5px;
+    padding-bottom: 10px;
+}
+.item_order_quantity_time{
+    display: flex;
+    gap: 10px;
+}
+.item_name_price{
+    display: flex;
+    justify-content: space-between;
+}
+.payment_order_status_container{
+    display: flex;
+    justify-content: space-between;
+}
+.status_element{
+    display: flex;
+    flex-direction: column;
+}

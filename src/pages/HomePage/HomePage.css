@@ -1,0 +1,39 @@
+.home_page_whole_container{
+    margin-top: 4.5rem;
+    font-family: "Roboto Condensed", sans-serif;
+    overflow-y: scroll;
+}
+.home_page_search_box{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+}
+.seach_box_container{
+    display: flex;
+    /* justify-content: center; */
+    align-items: center;
+    gap: 5px;
+    padding: 10px;
+    width: 90%;
+    border: 0.5px solid var( --light_border_color);
+    border-radius: 5px;
+    font-family: "Roboto Condensed", sans-serif;
+    /* height: 30px; */
+}
+.seach_box_container input{
+    width: 100%;
+    border: none;
+    font-size: 1rem;
+}
+.seach_box_container input:focus{
+    border: none;
+    outline: none;
+}
+.seach_box_container input::placeholder{
+    color: var(--light__text__color);
+}
+
+.home_page_category_componant{
+    border-bottom: 8px solid var(--light_border_color);
+}
