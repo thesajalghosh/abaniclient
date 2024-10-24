@@ -11,6 +11,7 @@ import { MdUpdate } from "react-icons/md";
 import { MdOutlineBookmarkBorder } from "react-icons/md";
 import Modal from "../../components/Modal/Modal"
 import Layout from "../../layout/Layout";
+import { isEmpty } from "../../utils/CommonUtilsFunction";
 const AccountPage = () => {
   const user = useSelector((state) => state.auth.user);
   const dispatch = useDispatch();
@@ -57,6 +58,8 @@ const AccountPage = () => {
             />
           )}
           
+          {!isEmpty(user) && 
+          
           <div className="profile__account__details__container">
             <div className="profile__account__details__container__upperPart">
               <div className="upper__part__icon">
@@ -69,6 +72,7 @@ const AccountPage = () => {
               </div>
             </div>
           </div>
+          }
           <div className="profile__update__container" onClick={logoutHandeler}>
             <span>
               <MdUpdate size={25} />
