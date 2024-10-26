@@ -64,16 +64,21 @@
   }
   
   .profile__logout__container {
-    display: flex;
-    padding: 10px 15px;
-    margin: 15px;
-    gap: 10px;
-    border: 0.5px solid var(--very__light__border);
-    border-radius: 10px;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 10vh;
+  }
+
+  .profile__logout__container button{
+    width: 90vw;
+    height: 5vh;
+    font-size: 1.2rem;
+    font-family: "Roboto Condensed", sans-serif;
+    border: 1px solid red;
+    border-radius: 4px;
     color: red;
-    font-weight: 600;
-    font-family: "Nunito Sans", sans-serif;
-    font-size: 1.1rem;
   }
   .profile__update__container {
     display: flex;

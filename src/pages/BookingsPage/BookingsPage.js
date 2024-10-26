@@ -10,7 +10,7 @@ const BookingsPage = () => {
     const [allBookings, setAllBookings] = useState()
     const user_info = useSelector((state) => state.auth.user)
 
-    console.log(user_info)
+    // console.log(user_info)
 
     const getAllBookings = async () => {
         try {

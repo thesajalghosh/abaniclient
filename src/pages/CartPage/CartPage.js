@@ -185,6 +185,8 @@ const CartPage = () => {
               },
             }
           );
+          dispatch(setStoreCart([]))
+          localStorage.removeItem('cart');
           setPaymentSuccessModal(true)
           setPaymentPageModal(false);
         },

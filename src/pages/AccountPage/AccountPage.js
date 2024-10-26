@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import "./AccountPage.css";
 import { useDispatch, useSelector } from "react-redux";
-import {logout} from "../../Store/authSlice"
+import { logout } from "../../Store/authSlice"
 
 import { MdOutlineKeyboardBackspace } from "react-icons/md";
 import { useNavigate } from "react-router-dom";
@@ -57,21 +57,21 @@ const AccountPage = () => {
               setClose={() => setLogoutModal(false)}
             />
           )}
-          
-          {!isEmpty(user) && 
-          
-          <div className="profile__account__details__container">
-            <div className="profile__account__details__container__upperPart">
-              <div className="upper__part__icon">
-                <IoPersonCircleOutline size={80} />
-              </div>
-              <div className="upper__part__user__details">
-                <div className="upper__part__user__name">{user.name}</div>
-                <span>{user.email}</span>
-                <span>+91 {user.phone}</span>
+
+          {!isEmpty(user) &&
+
+            <div className="profile__account__details__container">
+              <div className="profile__account__details__container__upperPart">
+                <div className="upper__part__icon">
+                  <IoPersonCircleOutline size={80} />
+                </div>
+                <div className="upper__part__user__details">
+                  <div className="upper__part__user__name">{user.name}</div>
+                  <span>{user.email}</span>
+                  <span>+91 {user.phone}</span>
+                </div>
               </div>
             </div>
-          </div>
           }
           <div className="profile__update__container" onClick={logoutHandeler}>
             <span>
@@ -83,23 +83,53 @@ const AccountPage = () => {
             <div
               className="profile__update__container"
               onClick={() => {
-                navigate("/user-dashboard/user-order");
+                navigate("/bookings");
               }}
             >
               <span>
                 <MdOutlineBookmarkBorder size={25} />
               </span>
-              <div> User Order</div>
+              <div>My bookings</div>
             </div>
           )}
           <div
-            className="profile__logout__container"
-            onClick={() => setLogoutModal(true)}
+            className="profile__update__container"
           >
             <span>
-              <FiLogOut size={25} />
+              <MdOutlineBookmarkBorder size={25} />
             </span>
-            <div> Logout</div>
+            <div>My plans</div>
+          </div>
+          <div className="profile__update__container">
+            <span>
+              <MdOutlineBookmarkBorder size={25} />
+            </span>
+            <div>Help center</div>
+          </div>
+          <div className="profile__update__container">
+            <span>
+              <MdOutlineBookmarkBorder size={25} />
+            </span>
+            <div>Manage address</div>
+          </div>
+          <div className="profile__update__container">
+            <span>
+              <MdOutlineBookmarkBorder size={25} />
+            </span>
+            <div>My ratings</div>
+          </div>
+          <div className="profile__update__container">
+            <span>
+              <MdOutlineBookmarkBorder size={25} />
+            </span>
+            <div>About the abani</div>
+          </div>
+          <div
+            className="profile__logout__container"
+         
+          >
+          
+            <button    onClick={() => setLogoutModal(true)}> Logout</button>
           </div>
         </div>
       </Layout>
