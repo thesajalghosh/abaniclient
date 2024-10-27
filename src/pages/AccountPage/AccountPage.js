@@ -12,13 +12,16 @@ import { MdOutlineBookmarkBorder } from "react-icons/md";
 import Modal from "../../components/Modal/Modal"
 import Layout from "../../layout/Layout";
 import { isEmpty } from "../../utils/CommonUtilsFunction";
+import { LuBookMarked } from "react-icons/lu";
+import { MdExplore, MdOutlineHelpOutline, MdOutlineStarRate  } from "react-icons/md";
+import { PiAddressBookTabsLight } from "react-icons/pi";
+import { FaHouseCrack } from "react-icons/fa6";
+
 const AccountPage = () => {
   const user = useSelector((state) => state.auth.user);
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const [logoutModal, setLogoutModal] = useState(false);
-
-  console.log(user);
 
   const logoutHandeler = () => {
     dispatch(logout());
@@ -79,7 +82,7 @@ const AccountPage = () => {
                 </span>
                 <div> Update Profile</div>
               </div>
-              {user.role === 0 && (
+             
                 <div
                   className="profile__update__container"
                   onClick={() => {
@@ -87,40 +90,40 @@ const AccountPage = () => {
                   }}
                 >
                   <span>
-                    <MdOutlineBookmarkBorder size={25} />
+                    <LuBookMarked size={25} />
                   </span>
                   <div>My bookings</div>
                 </div>
-              )}
+         
               <div
                 className="profile__update__container"
               >
                 <span>
-                  <MdOutlineBookmarkBorder size={25} />
+                  <MdExplore size={25} />
                 </span>
                 <div>My plans</div>
               </div>
               <div className="profile__update__container">
                 <span>
-                  <MdOutlineBookmarkBorder size={25} />
+                  <MdOutlineHelpOutline size={25} />
                 </span>
                 <div>Help center</div>
               </div>
               <div className="profile__update__container">
                 <span>
-                  <MdOutlineBookmarkBorder size={25} />
+                  <PiAddressBookTabsLight size={25} />
                 </span>
                 <div>Manage address</div>
               </div>
               <div className="profile__update__container">
                 <span>
-                  <MdOutlineBookmarkBorder size={25} />
+                  <MdOutlineStarRate  size={25} />
                 </span>
                 <div>My ratings</div>
               </div>
               <div className="profile__update__container">
                 <span>
-                  <MdOutlineBookmarkBorder size={25} />
+                  <FaHouseCrack size={25} />
                 </span>
                 <div>About the abani</div>
               </div>

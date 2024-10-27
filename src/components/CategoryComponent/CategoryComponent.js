@@ -33,7 +33,7 @@ const CategoryComponent = () => {
     }
   return (
     <div className="category_component_whole_container">
-    {loading && <Loader/>}
+    {/* {!loading && <Loader/>} */}
     <div className="category_component_content_container">
         {categories?.map((ele, index)=>(
             

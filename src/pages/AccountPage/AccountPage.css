@@ -29,6 +29,7 @@
     padding: 5px 10px;
     display: flex;
     flex-direction: column;
+    gap: 5px;
   }
   .upper__part__user__details span {
     color: var(--light__font__color);
@@ -85,12 +86,13 @@
     justify-content: flex-start;
     align-items: center;
     padding: 5px 10px;
-    gap: 10px;
+    gap: 20px;
     border: 1px solid var(--very__light__border);
     margin: 15px;
     font-family: "Nunito Sans", sans-serif;
     color: var(--srtong__font__color);
-    border-radius: 5px;
+    font-size: 1.1rem;
+    border-bottom: 0.5px solid var(--border__color);
   }
   .logout__footer__two__button {
     display: flex;

@@ -18,6 +18,7 @@ const App = () => {
   return (
     <BrowserRouter>
       <Suspense fallback={<Loader />}>
+   
         <Routes>
           <Route path="/register" element={<Register />} />
           <Route path="/login" element={<Login />} />
