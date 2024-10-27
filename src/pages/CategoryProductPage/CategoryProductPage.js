@@ -92,7 +92,7 @@ const CategoryProductPage = () => {
   return (
 
     <Layout headerEle={"Services"} backButton={true}>
-      {!loading && <Loader/>}
+      {loading && <Loader/>}
       <div className="category_product_page_whole_container">
         <div className="category_product_page_header">
           <div className="category_product_header_image">
