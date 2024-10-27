@@ -8,7 +8,8 @@ import { useNavigate } from "react-router";
 
 const Header = ({backButton, backButtonFunction, headerEle}) => {
   const navigate = useNavigate()
-  console.log("headerEle", headerEle)
+
+
   const backFunction = ()=> {
     if(isEmpty(backButtonFunction)){
         navigate(-1)

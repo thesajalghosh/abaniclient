@@ -59,79 +59,95 @@ const AccountPage = () => {
           )}
 
           {!isEmpty(user) &&
-
-            <div className="profile__account__details__container">
-              <div className="profile__account__details__container__upperPart">
-                <div className="upper__part__icon">
-                  <IoPersonCircleOutline size={80} />
-                </div>
-                <div className="upper__part__user__details">
-                  <div className="upper__part__user__name">{user.name}</div>
-                  <span>{user.email}</span>
-                  <span>+91 {user.phone}</span>
+            <>
+              <div className="profile__account__details__container">
+                <div className="profile__account__details__container__upperPart">
+                  <div className="upper__part__icon">
+                    <IoPersonCircleOutline size={80} />
+                  </div>
+                  <div className="upper__part__user__details">
+                    <div className="upper__part__user__name">{user.name}</div>
+                    <span>{user.email}</span>
+                    <span>+91 {user.phone}</span>
+                  </div>
                 </div>
               </div>
+
+              <div className="profile__update__container" onClick={logoutHandeler}>
+                <span>
+                  <MdUpdate size={25} />
+                </span>
+                <div> Update Profile</div>
+              </div>
+              {user.role === 0 && (
+                <div
+                  className="profile__update__container"
+                  onClick={() => {
+                    navigate("/bookings");
+                  }}
+                >
+                  <span>
+                    <MdOutlineBookmarkBorder size={25} />
+                  </span>
+                  <div>My bookings</div>
+                </div>
+              )}
+              <div
+                className="profile__update__container"
+              >
+                <span>
+                  <MdOutlineBookmarkBorder size={25} />
+                </span>
+                <div>My plans</div>
+              </div>
+              <div className="profile__update__container">
+                <span>
+                  <MdOutlineBookmarkBorder size={25} />
+                </span>
+                <div>Help center</div>
+              </div>
+              <div className="profile__update__container">
+                <span>
+                  <MdOutlineBookmarkBorder size={25} />
+                </span>
+                <div>Manage address</div>
+              </div>
+              <div className="profile__update__container">
+                <span>
+                  <MdOutlineBookmarkBorder size={25} />
+                </span>
+                <div>My ratings</div>
+              </div>
+              <div className="profile__update__container">
+                <span>
+                  <MdOutlineBookmarkBorder size={25} />
+                </span>
+                <div>About the abani</div>
+              </div>
+              <div
+                className="profile__logout__container"
+
+              >
+
+                <button onClick={() => setLogoutModal(true)}> Logout</button>
+              </div>
+            </>}
+          {isEmpty(user) &&
+            <div className="accout_page_login_container">
+              <div className="without_login_heading">You need to login your account to access full fetures</div>
+              <div className="without_login_container">
+                <div className="without_login_label">If you have account then login in now</div>
+                <button onClick={()=>navigate("/login")}>Login now</button>
+              </div>
+              <div className="without_login_container">
+                <div className="without_login_label">If you don't have account then register in now</div>
+                <button onClick={()=>navigate("/register")}>Register now</button>
+              </div>
+
             </div>
           }
-          <div className="profile__update__container" onClick={logoutHandeler}>
-            <span>
-              <MdUpdate size={25} />
-            </span>
-            <div> Update Profile</div>
-          </div>
-          {user.role === 0 && (
-            <div
-              className="profile__update__container"
-              onClick={() => {
-                navigate("/bookings");
-              }}
-            >
-              <span>
-                <MdOutlineBookmarkBorder size={25} />
-              </span>
-              <div>My bookings</div>
-            </div>
-          )}
-          <div
-            className="profile__update__container"
-          >
-            <span>
-              <MdOutlineBookmarkBorder size={25} />
-            </span>
-            <div>My plans</div>
-          </div>
-          <div className="profile__update__container">
-            <span>
-              <MdOutlineBookmarkBorder size={25} />
-            </span>
-            <div>Help center</div>
-          </div>
-          <div className="profile__update__container">
-            <span>
-              <MdOutlineBookmarkBorder size={25} />
-            </span>
-            <div>Manage address</div>
-          </div>
-          <div className="profile__update__container">
-            <span>
-              <MdOutlineBookmarkBorder size={25} />
-            </span>
-            <div>My ratings</div>
-          </div>
-          <div className="profile__update__container">
-            <span>
-              <MdOutlineBookmarkBorder size={25} />
-            </span>
-            <div>About the abani</div>
-          </div>
-          <div
-            className="profile__logout__container"
-         
-          >
-          
-            <button    onClick={() => setLogoutModal(true)}> Logout</button>
-          </div>
         </div>
+
       </Layout>
     </>
   );

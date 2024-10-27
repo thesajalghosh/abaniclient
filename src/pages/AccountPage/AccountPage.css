@@ -111,3 +111,32 @@
   .logout__footer__two__button button:first-child {
     background-color: var(--delete__button);
   }
+  .accout_page_login_container{
+    margin-top: 70px;
+    display: flex;
+    gap: 20px;
+    flex-direction: column;
+    padding: 15px;
+  }
+  .without_login_heading{
+    font-size: 1.2rem;
+  }
+  .without_login_container{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+   
+  }
+  .without_login_container button{
+    margin-top: 20px;
+    width: 90vw;
+    height: 5vh;
+    font-size: 1.2rem;
+    font-family: "Roboto Condensed", sans-serif;
+    /* border: 1px solid red; */
+    border-radius: 4px;
+    color: var( --strong__text__color);
+    background-color: var( --button_background);
+    border: 1px solid var( --button_border_color);
+  }
