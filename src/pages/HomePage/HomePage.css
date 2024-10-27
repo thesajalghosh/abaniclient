@@ -37,3 +37,38 @@
 .home_page_category_componant{
     border-bottom: 8px solid var(--light_border_color);
 }
+
+.home_page_footer_container{
+background-color: rgb(202, 205, 209);
+display: flex;
+flex-direction: column;
+gap: 10px;
+padding: 15px;
+margin-top: 30px;
+margin-bottom: 40px;
+padding-bottom: 100px;
+}
+.footer_section{
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+.company_name{
+    font-size: 1.5rem;
+}
+.footer_section_element_container{
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+.footer_section_element{
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+.footer_sub_heading{
+    font-size: 1.2rem;
+}
+.footer_section_element{
+    color: rgb(47, 47, 47);
+}
