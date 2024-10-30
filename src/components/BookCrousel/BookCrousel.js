@@ -9,6 +9,10 @@ import {
 } from "swiper/modules";
 
 import "./BookCrousel.css";
+import ImageOne from "../../Assets/image1.jpg"
+import ImageTwo from "../../Assets/image2.jpg"
+import ImageThree from "../../Assets/image3.jpg"
+import ImageFour from "../../Assets/image4.jpg"
 
 import "swiper/css";
 import "swiper/css/navigation";
@@ -26,24 +30,24 @@ const BookCrousel = () => {
         // navigation
         pagination={{ clickable: true }}
         // scrollbar={{ draggable: true }}
-        autoplay={{
-          delay: 2000, // Delay between slides in milliseconds
-          disableOnInteraction: false, // Continue autoplay after user interactions
-        }}
+        // autoplay={{
+        //   delay: 2000, // Delay between slides in milliseconds
+        //   disableOnInteraction: false, // Continue autoplay after user interactions
+        // }}
         // onSwiper={(swiper) => console.log(swiper)}
         // onSlideChange={() => console.log("slide change")}
       >
         <SwiperSlide>
-          <div className="swiper__slide__element">Slide 1</div>
+          <div className="swiper__slide__element"><img src={ImageOne} alt="one image"/></div>
         </SwiperSlide>
         <SwiperSlide>
-          <div className="swiper__slide__element">Slide 2</div>
+          <div className="swiper__slide__element"><img src={ImageTwo} alt="one image"/></div>
         </SwiperSlide>
         <SwiperSlide>
-          <div className="swiper__slide__element">Slide 3</div>
+          <div className="swiper__slide__element"><img src={ImageThree} alt="one image"/></div>
         </SwiperSlide>
         <SwiperSlide>
-          <div className="swiper__slide__element">Slide 4</div>
+          <div className="swiper__slide__element"><img src={ImageFour} alt="one image"/></div>
         </SwiperSlide>
       </Swiper>
     </div>
