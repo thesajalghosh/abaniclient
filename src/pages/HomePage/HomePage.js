@@ -3,6 +3,7 @@ import BookCrousel from "../../components/BookCrousel/BookCrousel";
 import { IoSearch } from "react-icons/io5";
 import "./HomePage.css"
 import CategoryComponent from "../../components/CategoryComponent/CategoryComponent";
+import MostBookService from "../../components/MostBookedService/MostBookedService"
 
 const HomePage = () => {
   return (
@@ -21,6 +22,9 @@ const HomePage = () => {
         <CategoryComponent />
       </div>
       <BookCrousel />
+      <div className="most_booked_serviced">
+        <MostBookService/>
+      </div>
       <div className="home_page_footer_container">
         <div className="company_name">The Abani</div>
         <div className="footer_section">
