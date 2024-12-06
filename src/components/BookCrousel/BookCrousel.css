@@ -9,10 +9,13 @@
   align-items: flex-start;
 }
 .swiper__slide__element img {
-  height: 206px;
-  width: 397px;
-  object-fit: contain;
+  height: 34vh;
+  width: 100vw;
   
+  
+}
+.swiper{
+  height: 300px;
 }
 
 .swiper-wrapper{
@@ -20,11 +23,57 @@
 }
 .swiper-slide {
   width: 70vw; /* Adjust the width as needed */
-  height: 200px !important; /* Adjust the height as needed */
-  margin: 10px !important;
+  /* height: 200px !important; /* Adjust the height as needed */
+  margin: 10px ;
   display: flex;
   justify-content: center;
   align-items: center;
   background-color: #ffffff; /* Optional: Background color for visibility */
   border: none /* Optional: Border for visibility */
+}
+
+
+/* Container for Swiper */
+.swiper {
+  width: 100%;
+  max-width: 600px; /* Adjust as needed for your design */
+  margin: 0 auto; /* Center the Swiper */
+  height: auto; /* Let the height adjust based on the content */
+}
+
+/* Styling each slide */
+.swiper__slide__element {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 300px; /* Fixed height for slides */
+  overflow: hidden;
+}
+
+.swiper__slide__element img {
+  max-width: 100%;
+  max-height: 100%;
+/* Ensures the image fits without distortion */
+  /* Optional: Adds rounded corners */
+}
+
+/* Responsive design */
+@media (max-width: 768px) {
+  .swiper {
+    height: auto; /* Adjust for smaller screens */
+  }
+
+  .swiper__slide__element {
+    height: 250px; /* Adjust height for smaller screens */
+  }
+}
+
+@media (max-width: 480px) {
+  .swiper {
+    height: auto;
+  }
+
+  .swiper__slide__element {
+    height: 200px; /* Further adjust for very small screens */
+  }
 }

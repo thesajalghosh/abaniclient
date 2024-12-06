@@ -36,6 +36,7 @@ const BookCrousel = () => {
         // }}
         // onSwiper={(swiper) => console.log(swiper)}
         // onSlideChange={() => console.log("slide change")}
+        height={"300px"}
       >
         <SwiperSlide>
           <div className="swiper__slide__element"><img src={ImageOne} alt="one image"/></div>
