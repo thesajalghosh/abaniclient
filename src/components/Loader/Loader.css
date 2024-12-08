@@ -1,7 +1,7 @@
 /* HTML: <div class="loader"></div> */
 .loader_whole_component{
    width: 100vw;
-   height:  100vh;
+   height: 20vh;
    display: flex;
    justify-content: center;
    align-items: center;

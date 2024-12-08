@@ -5,7 +5,7 @@ import "./CategoryComponent.css"
 import Loader from "../../components/Loader/Loader"
 
 const CategoryComponent = () => {
-    const [categories, setCategories] = useState(null);
+    const [categories, setCategories] = useState([]);
     const [loading, setLoading] = useState(false)
     const navigate = useNavigate()
     const getAllCategory = async () => {
@@ -31,9 +31,14 @@ const CategoryComponent = () => {
     const handelCategoryProduct = (id)=>{
             navigate(`/category-product/${id}`)
     }
+
+    console.log("categories", categories)
   return (
     <div className="category_component_whole_container">
-    {/* {!loading && <Loader/>} */}
+    {categories?.length === 0 && <Loader/>}
+
+    {categories?.length !== 0   &&
+    
     <div className="category_component_content_container">
         {categories?.map((ele, index)=>(
             
@@ -46,6 +51,7 @@ const CategoryComponent = () => {
             
         ))}
     </div>
+     }
       
     </div>
   )
