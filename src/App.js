@@ -5,6 +5,7 @@ import Layout from "./layout/Layout";
 import AccountPage from "./pages/AccountPage/AccountPage";
 import BookingsPage from "./pages/BookingsPage/BookingsPage";
 import CartPage from "./pages/CartPage/CartPage";
+import HelpPage from "./pages/HelpPage/HelpPage";
 
 // Lazy load your components
 const CategoryProductPage = lazy(() => import("./pages/CategoryProductPage/CategoryProductPage"));
@@ -39,6 +40,7 @@ const LayoutWrapper = () => {
           <Route path="/cart-page" element={<CartPage />} />
           <Route path="/account" element={<AccountPage/>} />
           <Route path="/bookings" element={<BookingsPage/>} />
+          <Route path="/help-page" element={<HelpPage/>}/>
         </Routes>
       </Suspense>
     </Layout>

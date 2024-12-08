@@ -36,7 +36,7 @@ const Footer = () => {
             </div>
             <div className="mobile__device__name">Cart</div>
           </div>
-          <div className="mobile__device__footer__item">
+          <div className="mobile__device__footer__item" onClick={()=> navigate("/help-page")}>
             <div className="mobile__device__icon">
               <IoHelpCircleOutline size={23} />
             </div>
