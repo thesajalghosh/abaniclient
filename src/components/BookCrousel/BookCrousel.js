@@ -30,10 +30,10 @@ const BookCrousel = () => {
         // navigation
         pagination={{ clickable: true }}
         // scrollbar={{ draggable: true }}
-        // autoplay={{
-        //   delay: 2000, // Delay between slides in milliseconds
-        //   disableOnInteraction: false, // Continue autoplay after user interactions
-        // }}
+        autoplay={{
+          delay: 1000, // Delay between slides in milliseconds
+          disableOnInteraction: false, // Continue autoplay after user interactions
+        }}
         // onSwiper={(swiper) => console.log(swiper)}
         // onSlideChange={() => console.log("slide change")}
         height={"300px"}
