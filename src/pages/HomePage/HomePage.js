@@ -4,8 +4,10 @@ import { IoSearch } from "react-icons/io5";
 import "./HomePage.css"
 import CategoryComponent from "../../components/CategoryComponent/CategoryComponent";
 import MostBookService from "../../components/MostBookedService/MostBookedService"
+import { useNavigate } from "react-router-dom";
 
 const HomePage = () => {
+  const navigate = useNavigate()
   return (
     <div className="home_page_whole_container">
       {/* <div className="current_location_section">
@@ -33,7 +35,7 @@ const HomePage = () => {
             <div className="footer_sub_heading">Company</div>
             <div className="footer_section_element">
               <span>About us</span>
-              <span>Terms @ condition</span>
+              <span onClick={()=> navigate("/terms-condition")}>Terms @ condition</span>
               <span>Privacy policy</span>
               <span>Anti-discrimination policy</span>
               <span>The Abani impact</span>
