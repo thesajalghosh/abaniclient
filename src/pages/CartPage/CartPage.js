@@ -156,7 +156,7 @@ const CartPage = () => {
       );
 
       const options = {
-        key: "rzp_test_ITd0ay3uQINZWj", // Replace with your Razorpay API key
+        key: process.env.RAZORPAY_KEY, 
         amount: final_order.data.amount,
         currency: final_order.data.currency,
         name: "The Abani",
