@@ -10,9 +10,12 @@
    
   
 }
-
+.error__message{
+    color: red;
+    height: 1vh;
+}
 .register__page__header{
-    font-size: 1.3rem;
+    font-size: 2rem;
     color: var( --more__strong__text__color);
     padding-top: 30px;
     padding-left: 15px;
@@ -29,16 +32,22 @@
     margin-top: 15px;
     display: flex;
     flex-direction: column;
-    gap: 10px;
+    gap: 5px;
     color: var( --strong__text__color);
 
 }
 .form__ele input{
-    width: 85vw;
-    height: 4vh;
+  
+    height: 6vh;
     background-color: blueviolet;
     border: none;
     border-radius: 3px;
+    padding: 10px 15px;
+    font-size: 1.3rem;
+    color: white;
+}
+.form__ele label{
+font-size: 1.2rem;
 }
 .form__ele input:focus{
     outline: none;
@@ -56,9 +65,14 @@
  background-color: bisque;
  border: none;
  border-radius: 5px;
- font-size: 1rem;
+ font-size: 1.3rem;
  font-family: "Roboto Condensed", sans-serif;
  
+}
+.button_color_style{
+    background-color: bisque;
+    color: black;
+    font-size: 1.3rem;
 }
 .open__login__page{
     margin-top: 50px;
@@ -88,3 +102,18 @@
     border-radius: 4px;
     background-color: var();
 }
+
+.spinner {
+    width: 16px;
+    height: 16px;
+    border: 2px solid transparent;
+    border-top-color: rgb(27, 27, 27); /* Spinner color */
+    border-radius: 50%;
+    animation: spin 0.6s linear infinite;
+  }
+  
+  @keyframes spin {
+    to {
+      transform: rotate(360deg);
+    }
+  }
