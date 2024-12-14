@@ -137,6 +137,14 @@ const CartPage = () => {
       [type]: e.target.value,
     }));
   };
+  function generate20DigitNumber() {
+    let randomNumber = '';
+    for (let i = 0; i < 20; i++) {
+        // Append a random digit (0-9) to the string
+        randomNumber += Math.floor(Math.random() * 10);
+    }
+    return randomNumber;
+}
 
   const handelFinalOrder = async () => {
     try {
@@ -144,8 +152,9 @@ const CartPage = () => {
         `${process.env.REACT_APP_BACKEND_URL}/api/v1/order/create-order`,
         {
           ...bookingDetails,
-          amount: price * 100, // Amount in paise
+          amount: price * 100, 
           currency: "INR",
+          receipt : `receipt#${generate20DigitNumber().toString()}`,
         },
         {
           headers: {
