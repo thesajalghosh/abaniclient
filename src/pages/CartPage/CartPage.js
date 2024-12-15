@@ -148,6 +148,8 @@ const CartPage = () => {
 
   const handelFinalOrder = async () => {
     try {
+      const {data} = await axios.get(`${process.env.REACT_APP_BACKEND_URL}/api/v1/razorpay-key`)
+    
       const final_order = await axios.post(
         `${process.env.REACT_APP_BACKEND_URL}/api/v1/order/create-order`,
         {
@@ -163,9 +165,9 @@ const CartPage = () => {
           },
         }
       );
-console.log("process.env.RAZORPAY_KEY", process.env.RAZORPAY_KEY)
+
       const options = {
-        key: process.env.RAZORPAY_KEY, 
+        key: data?.key, 
         amount: final_order.data.amount,
         currency: final_order.data.currency,
         name: "The Abani",
