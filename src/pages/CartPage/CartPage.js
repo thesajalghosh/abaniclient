@@ -163,7 +163,7 @@ const CartPage = () => {
           },
         }
       );
-
+console.log("process.env.RAZORPAY_KEY", process.env.RAZORPAY_KEY)
       const options = {
         key: process.env.RAZORPAY_KEY, 
         amount: final_order.data.amount,
@@ -177,9 +177,9 @@ const CartPage = () => {
           await axios.post(
             `${process.env.REACT_APP_BACKEND_URL}/api/v1/order/verify-payment`,
             {
-              order_id: response.razorpay_order_id,
-              payment_id: response.razorpay_payment_id,
-              signature: response.razorpay_signature,
+              order_id: response?.razorpay_order_id,
+              payment_id: response?.razorpay_payment_id,
+              signature: response?.razorpay_signature,
               user: user.id ,
               items: cartData,
               address: {address1: bookingDetails.address1, address2: bookingDetails.address2, address3: bookingDetails.address3, landmark: bookingDetails.landmark, pincode: bookingDetails.pincode},
