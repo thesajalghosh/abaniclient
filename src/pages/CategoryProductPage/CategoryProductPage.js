@@ -88,11 +88,18 @@ const CategoryProductPage = () => {
   
     dispatch(setStoreCart(updatedCart));
   };
+
+  console.log("catProduct", catProduct)
   
   return (
 
     <Layout headerEle={"Services"} backButton={true}>
       {loading && <Loader/>}
+      {catProduct?.length === 0 &&
+      <div className="flex mt-14">Comming soon</div>
+      }
+      {catProduct?.lenght !== 0 &&
+      
       <div className="category_product_page_whole_container">
         <div className="category_product_page_header">
           <div className="category_product_header_image">
@@ -131,7 +138,7 @@ const CategoryProductPage = () => {
                   </div>
 
                   <div className={`add_to_cart_section ${cart_data.includes(ele?._id) ? "add_button_active": ""}`}>
-                    <button onClick={() => addToCartHandler(ele)}>{cart_data.includes(ele?._id) ? "Remove": "Add"}</button>
+                    <button onClick={() => addToCartHandler(ele)}>{cart_data.includes(ele?._id) ? "Remove": "Book"}</button>
                   </div>
                 </div>
                 <div className="category_product_price_time">
@@ -155,6 +162,8 @@ const CategoryProductPage = () => {
           ))}
         </div>
       </div>
+      
+      }
 
     </Layout>
 
