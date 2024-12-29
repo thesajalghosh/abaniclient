@@ -5,6 +5,10 @@ import "./HomePage.css"
 import CategoryComponent from "../../components/CategoryComponent/CategoryComponent";
 import MostBookService from "../../components/MostBookedService/MostBookedService"
 import { useNavigate } from "react-router-dom";
+import { FaFacebook } from "react-icons/fa6";
+import { FaLinkedinIn,FaInstagram  } from "react-icons/fa";
+import { IoLogoYoutube } from "react-icons/io5";
+
 
 const HomePage = () => {
   const navigate = useNavigate()
@@ -55,6 +59,16 @@ const HomePage = () => {
 
         </div>
 
+      <div className="home_page_social_media_container">
+      <div className="footer_social_media mt-5 flex gap-4 justify-center items-center">
+
+        <div className="w-[40px] h-[40px] bg-gray-500 rounded-lg flex justify-center items-center"><FaFacebook size={25}/></div>
+        <div className="w-[40px] h-[40px] bg-gray-500 rounded-lg flex justify-center items-center"><FaLinkedinIn size={25}/></div>
+        <div className="w-[40px] h-[40px] bg-gray-500 rounded-lg flex justify-center items-center"><FaInstagram size={25}/></div>
+        <div className="w-[40px] h-[40px] bg-gray-500 rounded-lg flex justify-center items-center"><IoLogoYoutube size={25}/></div>
+      </div>
+     
+      </div>
       </div>
     </div>
   );
