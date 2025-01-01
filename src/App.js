@@ -11,7 +11,7 @@ import TermsAndCondition from "./pages/TermsAndCondition/TermsAndCondition";
 // Lazy load your components
 const CategoryProductPage = lazy(() => import("./pages/CategoryProductPage/CategoryProductPage"));
 const HomePage = lazy(() => import("./pages/HomePage/HomePage"));
-const Login = lazy(() => import("./pages/Login/Login"));
+const LoginPage = lazy(() => import("./pages/Login/LoginPage"));
 const Register = lazy(() => import("./pages/Registration/Register"));
 
 // const Loader = () => <div>Loading...</div>;
@@ -23,7 +23,7 @@ const App = () => {
    
         <Routes>
           <Route path="/register" element={<Register />} />
-          <Route path="/login" element={<Login />} />
+          <Route path="/login" element={<LoginPage />} />
           <Route path="/*" element={<LayoutWrapper />} />
         </Routes>
       </Suspense>

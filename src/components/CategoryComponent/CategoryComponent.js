@@ -32,7 +32,7 @@ const CategoryComponent = () => {
             navigate(`/category-product/${id}`)
     }
 
-    console.log("categories", categories)
+ 
   return (
     <div className="category_component_whole_container">
     {categories?.length === 0 && <Loader/>}

@@ -12,18 +12,15 @@ import axios from "axios";
 import Layout from "../../layout/Layout";
 import { setStoreCart, setRemoveCart } from "../../Store/cartSlice";
 import { isEmpty, isNotEmpty } from "../../utils/CommonUtilsFunction";
-import PaymentSuccess from "../../components/PaymentSuccess/PaymentSuccess";
+import BookingSuccess from "../../components/PaymentSuccess/PaymentSuccess";
 
 const CartPage = () => {
   const cartData = useSelector((state) => state.cart.storeCart);
   const user = useSelector((state) => state.auth.user);
+ 
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const [price, setPrice] = useState(0);
-  const [addPayPage, setAddPaypage] = useState(false);
-  const [address, setAddress] = useState("");
-  const [paymentMethod, setPaymentMethod] = useState(null);
-  const [card, setCard] = useState(false);
 
   const [orderLoading, setOrderLoading] = useState(false);
   const token = useSelector((state) => state.auth.token);
@@ -35,6 +32,8 @@ const CartPage = () => {
   const [paymentPageModal, setPaymentPageModal] = useState(false);
   const [paymentSuccessModal, setPaymentSuccessModal] = useState(false)
   const [cashBookingConfirmModal, setCashBookingConfirmModal] = useState(false)
+  const [cashOrderLoading, setCashOrderLoading] = useState(false)
+  const [successfulOrderDetails, setSuccessfulOrderDetails] = useState(null)
   const [captcha, setCaptcha] = useState("")
   const CAPTCHA_VALUE = "56712"
   const TimeSlotObject = {
@@ -149,11 +148,10 @@ const CartPage = () => {
     }
     return randomNumber;
   }
-  console.log("bookingDetails.paymentMode", bookingDetails)
+
   const handelFinalOrder = async () => {
     try {
       if (bookingDetails.paymentMode === 'cash') {
-        console.log("callll...")
         setCashBookingConfirmModal(true)
 
       } else {
@@ -180,11 +178,11 @@ const CartPage = () => {
           amount: final_order.data.amount,
           currency: final_order.data.currency,
           name: "The Abani",
-          description: "Test Transaction",
+          description: "Transaction",
           image: "https://your_logo_url",
           order_id: final_order.data.id,
           handler: async function (response) {
-            console.log("Payment Successful:", response);
+          
             await axios.post(
               `${process.env.REACT_APP_BACKEND_URL}/api/v1/order/verify-payment`,
               {
@@ -229,6 +227,45 @@ const CartPage = () => {
       console.log("Error placing final order:", error);
     }
   };
+  const handelFinalBookingForCash = async()=>{
+    setCashOrderLoading(true)
+    try {
+      
+      const order =  await axios.post(
+        `${process.env.REACT_APP_BACKEND_URL}/api/v1/order/create-cash-order`,
+        {
+          user: user._id,
+          items: cartData,
+          address: { address1: bookingDetails.address1, address2: bookingDetails.address2, address3: bookingDetails.address3, landmark: bookingDetails.landmark, pincode: bookingDetails.pincode },
+          bookingDate: bookingDetails.bookingDate,
+          timeSlot: bookingDetails.slot,
+          paymentMode: bookingDetails.paymentMode
+        },
+        {
+          headers: {
+            authorization: `Bearer ${token}`,
+            "Content-Type": "application/json",
+          },
+        }
+  
+      );
+      if(order?.data?.success){
+        setSuccessfulOrderDetails(order?.data?.order)
+        setPaymentSuccessModal(true)
+        setCashBookingConfirmModal(false)
+        setPaymentPageModal(false)
+        dispatch(setStoreCart([]))
+        localStorage.removeItem('cart');
+      }
+   
+    } catch (error) {
+      console.log(error)
+    }finally{
+      setCashOrderLoading(false)
+    }
+
+  }
+
 
   return (
 
@@ -256,19 +293,19 @@ const CartPage = () => {
 
                         <div className="cart_product_name">{e.name}</div>
                         <div className="product__quantity__container">
-                          <div className="product__quantity__increment__button__container">
+                          <div className="product__quantity__increment__button__container p-2">
                             <button onClick={() => minusHandler(e)}>
                               <FaMinus />
                             </button>
-                            <span>{e.buyqun}</span>
+                            <span className="text-lg">{e.buyqun}</span>
                             <button onClick={() => plusHandeler(e)}>
                               <FaPlus />
                             </button>
                           </div>
                         </div>
                       </div>
-                      <div className="cart_product__price">
-                        <MdCurrencyRupee size={16} />
+                      <div className="cart_product__price flex justify-center items-center text-xl">
+                        <MdCurrencyRupee size={20} />
                         {e.price}
                       </div>
                     </div>
@@ -286,15 +323,15 @@ const CartPage = () => {
               <div className="price_details_price_part">
                 <div className="price__part__element">
                   <span>Item total</span>
-                  <span>
-                    <MdCurrencyRupee size={16} />
+                  <span className="flex justify-center items-center text-xl">
+                    <MdCurrencyRupee size={20} />
                     {price}
                   </span>
                 </div>
                 <div className="price__part__element">
                   <span>Platform Fee</span>
-                  <span>
-                    <MdCurrencyRupee size={16} />
+                  <span className="flex justify-center items-center text-xl">
+                    <MdCurrencyRupee size={20} />
                     0
                   </span>
                 </div>
@@ -415,7 +452,7 @@ const CartPage = () => {
           </div>
         </div>
       </div>}
-      {console.log("cashBookingConfirmModal", cashBookingConfirmModal)}
+ 
       {cashBookingConfirmModal && <div className="cash_booking_confirm_modal">
         <div className="cash_booking_modal_heading">
           <div className="heading_name">Confirm Booking</div>
@@ -423,26 +460,29 @@ const CartPage = () => {
 
 
         </div>
-        <div className="cash_booking_confirm_body">
+        <div className="cash_booking_confirm_body mt-6">
 
 
-          <div className="showing_number">
+          <div className="showing_number flex justify-center items-center">
+          <div className="bg-gray-400 p-2 text-xl">
+
             {CAPTCHA_VALUE}
           </div>
-          <div className="confirm_booking_text">Enter the captcha to confirm booking</div>
+          </div>
+          <div className="confirm_booking_text p-4 mt-4">Enter the captcha to confirm booking</div>
           <div className="input_final_submission_button p-4">
         
             <input value={captcha} onChange={(e) => setCaptcha(e.target.value)} class="appearance-none text-md py-1 px-2 focus:outline-none border-2
-             focus:ring-blue-600 focus:border-blue-600 dark:bg-gray-100 text-purple-900 rounded-lg  w-[100%]
-              dark:text-gray-100 placeholder-blue-300 dark:placeholder-gray-600 font-semibold 
-               rounded-l" type="search" name="q" placeholder="Enter above text" />
+             focus:black-600 focus:border-blue-600 dark:bg-gray-100 text-purple-900 rounded-lg  w-[100%] h-[45px]
+              dark:text-black-100 placeholder-blue-300 dark:placeholder-gray-600 font-semibold text-black
+               rounded-l" type="search" name="q" placeholder="Enter above number ex-34532" />
 
              
-            <button type="button" disabled={CAPTCHA_VALUE !== captcha} class="py-2 px-4 mt-6 flex justify-center items-center  bg-blue-600 hover:bg-blue-700 focus:ring-blue-500 focus:ring-offset-blue-200 text-white w-full transition ease-in duration-200 text-center text-base font-semibold shadow-md focus:outline-none focus:ring-2 focus:ring-offset-2  rounded-lg max-w-md">
-              <svg width="20" height="20" fill="currentColor" class="mr-2 animate-spin" viewBox="0 0 1792 1792" xmlns="http://www.w3.org/2000/svg">
+            <button type="button" disabled={CAPTCHA_VALUE !== captcha} class="py-2 px-4 mt-6 flex justify-center items-center  bg-blue-600 hover:bg-blue-700 focus:ring-blue-500 focus:ring-offset-blue-200 text-white w-full transition ease-in duration-200 text-center text-base font-semibold shadow-md focus:outline-none focus:ring-2 focus:ring-offset-2  rounded-lg max-w-md" onClick={()=> handelFinalBookingForCash()}>
+              {cashOrderLoading &&   <svg width="20" height="20" fill="currentColor" class="mr-2 animate-spin" viewBox="0 0 1792 1792" xmlns="http://www.w3.org/2000/svg">
                 <path d="M526 1394q0 53-37.5 90.5t-90.5 37.5q-52 0-90-38t-38-90q0-53 37.5-90.5t90.5-37.5 90.5 37.5 37.5 90.5zm498 206q0 53-37.5 90.5t-90.5 37.5-90.5-37.5-37.5-90.5 37.5-90.5 90.5-37.5 90.5 37.5 37.5 90.5zm-704-704q0 53-37.5 90.5t-90.5 37.5-90.5-37.5-37.5-90.5 37.5-90.5 90.5-37.5 90.5 37.5 37.5 90.5zm1202 498q0 52-38 90t-90 38q-53 0-90.5-37.5t-37.5-90.5 37.5-90.5 90.5-37.5 90.5 37.5 37.5 90.5zm-964-996q0 66-47 113t-113 47-113-47-47-113 47-113 113-47 113 47 47 113zm1170 498q0 53-37.5 90.5t-90.5 37.5-90.5-37.5-37.5-90.5 37.5-90.5 90.5-37.5 90.5 37.5 37.5 90.5zm-640-704q0 80-56 136t-136 56-136-56-56-136 56-136 136-56 136 56 56 136zm530 206q0 93-66 158.5t-158 65.5q-93 0-158.5-65.5t-65.5-158.5q0-92 65.5-158t158.5-66q92 0 158 66t66 158z">
                 </path>
-              </svg>
+              </svg>}
               Comfirm Booking
             </button>
 
@@ -454,7 +494,7 @@ const CartPage = () => {
 
       </div>}
 
-      {paymentSuccessModal && <PaymentSuccess totalBalance={price} setPaymentSuccessModal={setPaymentSuccessModal} />}
+      {paymentSuccessModal && <BookingSuccess totalBalance={price} setPaymentSuccessModal={setPaymentSuccessModal} successfulOrderDetails={successfulOrderDetails}/>}
 
 
 

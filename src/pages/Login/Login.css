@@ -90,3 +90,23 @@
     font-size: 0.8rem;
 
 }
+.enter_otp_modal{
+    position: fixed;
+    z-index: 999999999;
+    left: 0;
+    top:0;
+    background-color: rgb(233, 220, 246);
+    height: 100vh;
+    width: 100vw;
+}
+.otp_input{
+    width: 75vw;
+    height: 6vh;
+    border-radius: 5px;
+    padding: 5px 15px;
+    font-size: 1.2rem;
+    border: none;
+}
+.otp_input:focus{
+    outline: none;
+}
