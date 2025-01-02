@@ -89,7 +89,6 @@ const CategoryProductPage = () => {
     dispatch(setStoreCart(updatedCart));
   };
 
-  console.log("catProduct", catProduct)
   
   return (
 

@@ -31,8 +31,8 @@ const MostBookedService = () => {
             <div className="most_booked_service_heading">Most Popular</div>
 
             <div className="popular_product_container">
-                {mostBookedServicedList && mostBookedServicedList?.map((ele) => (
-                    <div className="every_popular_service" key={ele.id}>
+                {mostBookedServicedList && mostBookedServicedList?.map((ele, index) => (
+                    <div className="every_popular_service" key={index}>
                         <div className="popular_service_image"><img src={ele?.product?.url} alt={ele?.product?.name}/></div>
                         <div className="popular_service_content">
                             <div className="service_name">{ele?.product?.name}</div>

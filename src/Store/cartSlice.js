@@ -10,7 +10,7 @@ export const cartSlice = createSlice({
   initialState,
   reducers: {
     setStoreCart: (state, { payload }) => {
-      console.log("payload", payload);
+      
       state.storeCart = payload;
       let temp = state.storeCart;
       localStorage.setItem("cart", JSON.stringify(temp));
