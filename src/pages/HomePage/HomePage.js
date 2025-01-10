@@ -62,10 +62,10 @@ const HomePage = () => {
       <div className="home_page_social_media_container">
       <div className="footer_social_media mt-5 flex gap-4 justify-center items-center">
 
-        <div className="w-[40px] h-[40px] bg-gray-500 rounded-lg flex justify-center items-center" onClick={()=> navigate("https://www.facebook.com/share/QqzPBPnw2hD5RJaa/")}><FaFacebook size={25}/></div>
+        <div className="w-[40px] h-[40px] bg-gray-500 rounded-lg flex justify-center items-center" onClick={()=> navigate("https://www.facebook.com/share/QqzPBPnw2hD5RJaa/", {replace:true})}><FaFacebook size={25}/></div>
         <div className="w-[40px] h-[40px] bg-gray-500 rounded-lg flex justify-center items-center"><FaLinkedinIn size={25}/></div>
-        <div className="w-[40px] h-[40px] bg-gray-500 rounded-lg flex justify-center items-center" onClick={()=> navigate("https://www.instagram.com/theabani58/profilecard/?igsh=MXJ5eTVxbTRwejYzcg==")}><FaInstagram size={25}/></div>
-        <div className="w-[40px] h-[40px] bg-gray-500 rounded-lg flex justify-center items-center" onClick={()=> navigate("https://youtube.com/@theabani9891?si=O_CqYk-M69imQLif")}><IoLogoYoutube size={25}/></div>
+        <div className="w-[40px] h-[40px] bg-gray-500 rounded-lg flex justify-center items-center" onClick={()=> navigate("https://www.instagram.com/theabani58/profilecard/?igsh=MXJ5eTVxbTRwejYzcg==", {replace:true})}><FaInstagram size={25}/></div>
+        <div className="w-[40px] h-[40px] bg-gray-500 rounded-lg flex justify-center items-center" onClick={()=> navigate("https://youtube.com/@theabani9891?si=O_CqYk-M69imQLif", {replace:true})}><IoLogoYoutube size={25}/></div>
       </div>
      
       </div>
