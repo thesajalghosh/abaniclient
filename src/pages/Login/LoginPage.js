@@ -47,9 +47,8 @@ const Login = () => {
        
         setUserDetails({...userDetails, "phone": formData.phone})
         const otp = generateOTP();
-        const response = await axios.get(`https://www.fast2sms.com/dev/bulkV2?authorization=JTW5I4LfmhBUuwl91pXnYAZ8V02DxMeEtNGkjsFbCvSi7Ho6aK8UhgpRvP7Ts0eCHzDF1kOAM5YSrE9Z&variables_values=${otp}&route=otp&numbers=${formData.phone},9609238676}`)
-        console.log("response", response)
-        console.log("otp.......................", otp)
+        const response = await axios.get(`https://www.fast2sms.com/dev/bulkV2?authorization=${process.env.REACT_APP_OTP_KEY}&variables_values=${otp}&route=otp&numbers=${formData.phone},9609238676}`)
+     
         setOtp(otp)
 
         setOtpModal(true)

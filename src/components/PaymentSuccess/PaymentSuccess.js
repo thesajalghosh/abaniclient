@@ -6,21 +6,17 @@ import { isNotEmpty } from '../../utils/CommonUtilsFunction';
 
 const BookingSuccess = ({ totalBalance, setPaymentSuccessModal, successfulOrderDetails }) => {
   const navigate = useNavigate()
-  console.log("successfulOrderDetails", successfulOrderDetails)
+
+  function formatDate(dateString) {
+    const date = new Date(dateString);
+    return date.toLocaleDateString('en-GB', { day: 'numeric', month: 'short', year: 'numeric' });
+  }
   return (
     <div className="payment_success_whole_container">
       <div className="payment_success_header">
         <IoArrowBackOutline size={25} onClick={() => setPaymentSuccessModal(false)} />
         <span>Booking</span>
       </div>
-
-      {/* <div className="payment_success_container">
-        <div className="payment_success_message">
-          <h2>Payment Successful!</h2>
-          <p>Your payment of <span>${totalBalance}</span> was completed successfully.</p>
-        </div>
-        <button className="view_order_button" onClick={() => navigate("/bookings")}>View Order</button>
-      </div> */}
 
 
       <section class="bg-white py-8 antialiased md:py-16">
@@ -35,11 +31,11 @@ const BookingSuccess = ({ totalBalance, setPaymentSuccessModal, successfulOrderD
       <div class="flex justify-between">
         <dl class="sm:flex items-center justify-between gap-4">
           <dt class="font-normal mb-1 sm:mb-0 text-gray-500">Booking date</dt>
-          <dd class="font-medium text-gray-900 sm:text-end">14 May 2024</dd>
+          <dd class="font-medium text-gray-900 sm:text-end">{formatDate(successfulOrderDetails?.order?.bookingDate)}</dd>
         </dl>
         <dl class="sm:flex items-center justify-between gap-4">
           <dt class="font-normal mb-1 sm:mb-0 text-gray-500">Order date</dt>
-          <dd class="font-medium text-gray-900 sm:text-end">14 May 2024</dd>
+          <dd class="font-medium text-gray-900 sm:text-end">{formatDate(successfulOrderDetails?.order?.createdAt)}</dd>
         </dl>
       </div>
       <div class="flex justify-between">
