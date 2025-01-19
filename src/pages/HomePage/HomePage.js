@@ -12,6 +12,13 @@ import { IoLogoYoutube } from "react-icons/io5";
 
 const HomePage = () => {
   const navigate = useNavigate()
+  const handleNavigation = (url, isExternal = false) => {
+    if (isExternal) {
+      window.open(url, "_blank", "noopener,noreferrer"); // Open external links in a new tab
+    } else {
+      navigate(url); // Navigate internally
+    }
+  };
   return (
     <div className="home_page_whole_container">
       {/* <div className="current_location_section">
@@ -61,12 +68,52 @@ const HomePage = () => {
 
       <div className="home_page_social_media_container">
       <div className="footer_social_media mt-5 flex gap-4 justify-center items-center">
-
-        <div className="w-[40px] h-[40px] bg-gray-500 rounded-lg flex justify-center items-center" onClick={()=> navigate("https://www.facebook.com/share/QqzPBPnw2hD5RJaa/", {replace:true})}><FaFacebook size={25}/></div>
-        <div className="w-[40px] h-[40px] bg-gray-500 rounded-lg flex justify-center items-center"><FaLinkedinIn size={25}/></div>
-        <div className="w-[40px] h-[40px] bg-gray-500 rounded-lg flex justify-center items-center" onClick={()=> navigate("https://www.instagram.com/theabani58/profilecard/?igsh=MXJ5eTVxbTRwejYzcg==", {replace:true})}><FaInstagram size={25}/></div>
-        <div className="w-[40px] h-[40px] bg-gray-500 rounded-lg flex justify-center items-center" onClick={()=> navigate("https://youtube.com/@theabani9891?si=O_CqYk-M69imQLif", {replace:true})}><IoLogoYoutube size={25}/></div>
+      {/* Facebook */}
+      <div
+        className="w-[40px] h-[40px] bg-gray-500 rounded-lg flex justify-center items-center cursor-pointer"
+        onClick={() =>
+          handleNavigation("https://www.facebook.com/share/QqzPBPnw2hD5RJaa/", true)
+        }
+      >
+        <FaFacebook size={25} />
       </div>
+
+      {/* LinkedIn */}
+      <div
+        className="w-[40px] h-[40px] bg-gray-500 rounded-lg flex justify-center items-center cursor-pointer"
+        onClick={() =>
+          handleNavigation("https://www.linkedin.com/", true)
+        }
+      >
+        <FaLinkedinIn size={25} />
+      </div>
+
+      {/* Instagram */}
+      <div
+        className="w-[40px] h-[40px] bg-gray-500 rounded-lg flex justify-center items-center cursor-pointer"
+        onClick={() =>
+          handleNavigation(
+            "https://www.instagram.com/theabani58/profilecard/?igsh=MXJ5eTVxbTRwejYzcg==",
+            true
+          )
+        }
+      >
+        <FaInstagram size={25} />
+      </div>
+
+      {/* YouTube */}
+      <div
+        className="w-[40px] h-[40px] bg-gray-500 rounded-lg flex justify-center items-center cursor-pointer"
+        onClick={() =>
+          handleNavigation(
+            "https://youtube.com/@theabani9891?si=O_CqYk-M69imQLif",
+            true
+          )
+        }
+      >
+        <IoLogoYoutube size={25} />
+      </div>
+    </div>
      
       </div>
       </div>
