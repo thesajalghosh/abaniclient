@@ -93,7 +93,7 @@ const HomePage = () => {
         className="w-[40px] h-[40px] bg-gray-500 rounded-lg flex justify-center items-center cursor-pointer"
         onClick={() =>
           handleNavigation(
-            "https://www.instagram.com/theabani58/profilecard/?igsh=MXJ5eTVxbTRwejYzcg==",
+            "https://www.instagram.com/theabani58/",
             true
           )
         }
