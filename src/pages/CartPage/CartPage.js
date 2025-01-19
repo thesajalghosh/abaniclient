@@ -439,7 +439,7 @@ const CartPage = () => {
               selected={selectedDate}
               onChange={(date) => {
                 setSelectedDate(date)
-                handelAddressAndSelectSlot(date.toLocaleDateString('en-GB'), "bookingDate")
+                handelAddressAndSelectSlot(date, "bookingDate")
               }
 
               }
