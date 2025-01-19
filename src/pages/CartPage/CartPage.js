@@ -13,11 +13,14 @@ import Layout from "../../layout/Layout";
 import { setStoreCart, setRemoveCart } from "../../Store/cartSlice";
 import { isEmpty, isNotEmpty } from "../../utils/CommonUtilsFunction";
 import BookingSuccess from "../../components/PaymentSuccess/PaymentSuccess";
+import DatePicker from "react-datepicker";
+import "react-datepicker/dist/react-datepicker.css";
 
 const CartPage = () => {
   const cartData = useSelector((state) => state.cart.storeCart);
   const user = useSelector((state) => state.auth.user);
- 
+  const [selectedDate, setSelectedDate] = useState(new Date());
+
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const [price, setPrice] = useState(0);
@@ -135,11 +138,21 @@ const CartPage = () => {
   };
 
   const handelAddressAndSelectSlot = (e, type) => {
-    setBookingDetails((prev) => ({
-      ...prev,
-      [type]: e.target.value,
-    }));
+    if (type === "bookingDate") {
+      setBookingDetails((prev) => ({
+        ...prev,
+        [type]: e,
+      }));
+
+    } else {
+
+      setBookingDetails((prev) => ({
+        ...prev,
+        [type]: e.target.value,
+      }));
+    }
   };
+
   function generate20DigitNumber() {
     let randomNumber = '';
     for (let i = 0; i < 20; i++) {
@@ -182,7 +195,7 @@ const CartPage = () => {
           image: "https://your_logo_url",
           order_id: final_order.data.id,
           handler: async function (response) {
-          
+
             await axios.post(
               `${process.env.REACT_APP_BACKEND_URL}/api/v1/order/verify-payment`,
               {
@@ -227,11 +240,11 @@ const CartPage = () => {
       console.log("Error placing final order:", error);
     }
   };
-  const handelFinalBookingForCash = async()=>{
+  const handelFinalBookingForCash = async () => {
     setCashOrderLoading(true)
     try {
-      
-      const order =  await axios.post(
+
+      const order = await axios.post(
         `${process.env.REACT_APP_BACKEND_URL}/api/v1/order/create-cash-order`,
         {
           user: user._id,
@@ -247,9 +260,9 @@ const CartPage = () => {
             "Content-Type": "application/json",
           },
         }
-  
+
       );
-      if(order?.data?.success){
+      if (order?.data?.success) {
         setSuccessfulOrderDetails(order?.data?.order)
         setPaymentSuccessModal(true)
         setCashBookingConfirmModal(false)
@@ -257,13 +270,28 @@ const CartPage = () => {
         dispatch(setStoreCart([]))
         localStorage.removeItem('cart');
       }
-   
+
     } catch (error) {
       console.log(error)
-    }finally{
+    } finally {
       setCashOrderLoading(false)
     }
 
+  }
+  function convertToDateObject(dateString) {
+    // Check if input is valid
+    if (!dateString || !/^\d{2}\/\d{2}\/\d{4}$/.test(dateString)) {
+      throw new Error("Invalid date format. Use dd/mm/yyyy.");
+    }
+
+    // Split the dateString into day, month, and year
+    const [day, month, year] = dateString.split("/").map(Number);
+
+    // Create a Date object (month is 0-indexed in JavaScript)
+    const dateObject = new Date(year, month - 1, day);
+
+    // Return the Date object
+    return dateObject;
   }
 
 
@@ -404,7 +432,19 @@ const CartPage = () => {
         <div className="address_details_modal">
           <div className="address_details_input">
             <label>Select date</label>
-            <input type='date' placeholder="Enter pincode" onChange={(e) => handelAddressAndSelectSlot(e, "bookingDate")} />
+            <DatePicker
+              showIcon
+              toggleCalendarOnIconClick
+              dateFormat="dd/MM/yyyy"
+              selected={selectedDate}
+              onChange={(date) => {
+                setSelectedDate(date)
+                handelAddressAndSelectSlot(date.toLocaleDateString('en-GB'), "bookingDate")
+              }
+
+              }
+            />
+            {/* <input type='date' placeholder="DD/MM/YYYY" onChange={(e) => handelAddressAndSelectSlot(e, "bookingDate")} /> */}
           </div>
           <div className="address_details_input">
 
@@ -452,7 +492,7 @@ const CartPage = () => {
           </div>
         </div>
       </div>}
- 
+
       {cashBookingConfirmModal && <div className="cash_booking_confirm_modal">
         <div className="cash_booking_modal_heading">
           <div className="heading_name">Confirm Booking</div>
@@ -464,22 +504,22 @@ const CartPage = () => {
 
 
           <div className="showing_number flex justify-center items-center">
-          <div className="bg-gray-400 p-2 text-xl">
+            <div className="bg-gray-400 p-2 text-xl">
 
-            {CAPTCHA_VALUE}
-          </div>
+              {CAPTCHA_VALUE}
+            </div>
           </div>
           <div className="confirm_booking_text p-4 mt-4">Enter the captcha to confirm booking</div>
           <div className="input_final_submission_button p-4">
-        
+
             <input value={captcha} onChange={(e) => setCaptcha(e.target.value)} class="appearance-none text-md py-1 px-2 focus:outline-none border-2
              focus:black-600 focus:border-blue-600 dark:bg-gray-100 text-purple-900 rounded-lg  w-[100%] h-[45px]
               dark:text-black-100 placeholder-blue-300 dark:placeholder-gray-600 font-semibold text-black
                rounded-l" type="search" name="q" placeholder="Enter above number ex-34532" />
 
-             
-            <button type="button" disabled={CAPTCHA_VALUE !== captcha} class="py-2 px-4 mt-6 flex justify-center items-center  bg-blue-600 hover:bg-blue-700 focus:ring-blue-500 focus:ring-offset-blue-200 text-white w-full transition ease-in duration-200 text-center text-base font-semibold shadow-md focus:outline-none focus:ring-2 focus:ring-offset-2  rounded-lg max-w-md" onClick={()=> handelFinalBookingForCash()}>
-              {cashOrderLoading &&   <svg width="20" height="20" fill="currentColor" class="mr-2 animate-spin" viewBox="0 0 1792 1792" xmlns="http://www.w3.org/2000/svg">
+
+            <button type="button" disabled={CAPTCHA_VALUE !== captcha} class="py-2 px-4 mt-6 flex justify-center items-center  bg-blue-600 hover:bg-blue-700 focus:ring-blue-500 focus:ring-offset-blue-200 text-white w-full transition ease-in duration-200 text-center text-base font-semibold shadow-md focus:outline-none focus:ring-2 focus:ring-offset-2  rounded-lg max-w-md" onClick={() => handelFinalBookingForCash()}>
+              {cashOrderLoading && <svg width="20" height="20" fill="currentColor" class="mr-2 animate-spin" viewBox="0 0 1792 1792" xmlns="http://www.w3.org/2000/svg">
                 <path d="M526 1394q0 53-37.5 90.5t-90.5 37.5q-52 0-90-38t-38-90q0-53 37.5-90.5t90.5-37.5 90.5 37.5 37.5 90.5zm498 206q0 53-37.5 90.5t-90.5 37.5-90.5-37.5-37.5-90.5 37.5-90.5 90.5-37.5 90.5 37.5 37.5 90.5zm-704-704q0 53-37.5 90.5t-90.5 37.5-90.5-37.5-37.5-90.5 37.5-90.5 90.5-37.5 90.5 37.5 37.5 90.5zm1202 498q0 52-38 90t-90 38q-53 0-90.5-37.5t-37.5-90.5 37.5-90.5 90.5-37.5 90.5 37.5 37.5 90.5zm-964-996q0 66-47 113t-113 47-113-47-47-113 47-113 113-47 113 47 47 113zm1170 498q0 53-37.5 90.5t-90.5 37.5-90.5-37.5-37.5-90.5 37.5-90.5 90.5-37.5 90.5 37.5 37.5 90.5zm-640-704q0 80-56 136t-136 56-136-56-56-136 56-136 136-56 136 56 56 136zm530 206q0 93-66 158.5t-158 65.5q-93 0-158.5-65.5t-65.5-158.5q0-92 65.5-158t158.5-66q92 0 158 66t66 158z">
                 </path>
               </svg>}
@@ -494,7 +534,7 @@ const CartPage = () => {
 
       </div>}
 
-      {paymentSuccessModal && <BookingSuccess totalBalance={price} setPaymentSuccessModal={setPaymentSuccessModal} successfulOrderDetails={successfulOrderDetails}/>}
+      {paymentSuccessModal && <BookingSuccess totalBalance={price} setPaymentSuccessModal={setPaymentSuccessModal} successfulOrderDetails={successfulOrderDetails} />}
 
 
 
