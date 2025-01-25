@@ -82,7 +82,7 @@ const BookingSuccess = ({ totalBalance, setPaymentSuccessModal, successfulOrderD
       </dl>
       <dl class="sm:flex items-center justify-between gap-4">
         <dt class="font-normal mb-1 sm:mb-0 text-gray-500">Booked services name</dt>
-        {successfulOrderDetails.items.map((item, index) => (
+        {(successfulOrderDetails?.items ?? [])?.map((item, index) => (
           <dd class="font-medium text-gray-900 sm:text-end">{`${index + 1}.`} {item?.name}</dd>
         ))}
       </dl>

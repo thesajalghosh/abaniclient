@@ -19,6 +19,7 @@ import "react-datepicker/dist/react-datepicker.css";
 const CartPage = () => {
   const cartData = useSelector((state) => state.cart.storeCart);
   const user = useSelector((state) => state.auth.user);
+  console.log("user", user)
   const [selectedDate, setSelectedDate] = useState(new Date());
 
   const dispatch = useDispatch();
@@ -163,13 +164,14 @@ const CartPage = () => {
   }
 
   const handelFinalOrder = async () => {
+    // console.log("cartData", cartData)
     try {
       if (bookingDetails.paymentMode === 'cash') {
         setCashBookingConfirmModal(true)
 
       } else {
         const { data } = await axios.get(`${process.env.REACT_APP_BACKEND_URL}/api/v1/razorpay-key`)
-
+console.log("data", data)
         const final_order = await axios.post(
           `${process.env.REACT_APP_BACKEND_URL}/api/v1/order/create-order`,
           {
@@ -185,7 +187,7 @@ const CartPage = () => {
             },
           }
         );
-
+console.log("cartData", cartData)
         const options = {
           key: data?.key,
           amount: final_order.data.amount,
@@ -196,13 +198,13 @@ const CartPage = () => {
           order_id: final_order.data.id,
           handler: async function (response) {
 
-            await axios.post(
+         const {data} =   await axios.post(
               `${process.env.REACT_APP_BACKEND_URL}/api/v1/order/verify-payment`,
               {
                 order_id: response?.razorpay_order_id,
                 payment_id: response?.razorpay_payment_id,
                 signature: response?.razorpay_signature,
-                user: user.id,
+                user: user._id,
                 items: cartData,
                 address: { address1: bookingDetails.address1, address2: bookingDetails.address2, address3: bookingDetails.address3, landmark: bookingDetails.landmark, pincode: bookingDetails.pincode },
                 bookingDate: bookingDetails.bookingDate,
@@ -220,6 +222,8 @@ const CartPage = () => {
             localStorage.removeItem('cart');
             setPaymentSuccessModal(true)
             setPaymentPageModal(false);
+            setSuccessfulOrderDetails(data)
+            console.log("data..................>>>", data)
           },
           prefill: {
             name: bookingDetails?.name || "Your Name",
