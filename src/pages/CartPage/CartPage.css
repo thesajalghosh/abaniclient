@@ -306,7 +306,7 @@
     display: flex;
     align-items: center;
     flex-direction: column;
-    gap: 15px;
+    gap: 10px;
     font-family: "Roboto Condensed", sans-serif;
   }
 
@@ -396,3 +396,25 @@
     justify-content: end;
    
   }
+  .verify_payment_loading{
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 999999999;
+    width: 100vw;
+    height: 100vh;
+    background-color: white;
+  }
+
+  .error__message{
+    font-size: 0.9rem;
+    color: red;
+}
+.payment_modal_button_container{
+  gap: 20px !important;
+}
+.payment_modal_button_container button{
+   width: 45vw !important;
+   height: 5vh !important;
+  
+}

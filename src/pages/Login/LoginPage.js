@@ -44,14 +44,21 @@ const Login = () => {
         return Math.floor(1000 + Math.random() * 9000); // Generates a number between 1000 and 9999
     }
     const onSubmit = async (formData) => {
-       
-        setUserDetails({...userDetails, "phone": formData.phone})
-        const otp = generateOTP();
-        const response = await axios.get(`https://www.fast2sms.com/dev/bulkV2?authorization=${process.env.REACT_APP_OTP_KEY}&variables_values=${otp}&route=otp&numbers=${formData.phone},9609238676}`)
-     
-        setOtp(otp)
+        setIsLoading(true)
+        try {
+            setUserDetails({ ...userDetails, "phone": formData.phone })
+            const otp = generateOTP();
+            const response = await axios.get(`https://www.fast2sms.com/dev/bulkV2?authorization=${process.env.REACT_APP_OTP_KEY}&variables_values=${otp}&route=otp&numbers=${formData.phone},9609238676}`)
 
-        setOtpModal(true)
+            setOtp(otp)
+
+            setOtpModal(true)
+        } catch (error) {
+            console.log("error", error)
+        }finally{
+            setIsLoading(false)
+        }
+
     };
     const handelVerifyOtp = async () => {
         setIsLoading(true)
@@ -63,49 +70,49 @@ const Login = () => {
                     dispatch(loginSuccess(data)); // Save user data and token
                     navigate("/"); // Redirect on success
                     toast.success("Successfully logged in!");
-                } else if(!data.userExist){
+                } else if (!data.userExist) {
                     setUserDetailsModal(true)
                     setOtpModal(false)
 
                 }
             }
-          
+
         } catch (error) {
             console.log("error", error)
-        }finally{
+        } finally {
             setIsLoading(false)
         }
     }
 
-    const handelOnchangeUserDetails = (e, field)=> {
-        setUserDetails({...userDetails, [field]: e.target.value})
+    const handelOnchangeUserDetails = (e, field) => {
+        setUserDetails({ ...userDetails, [field]: e.target.value })
 
     }
 
-    const handelCreateAccount = async()=>{
+    const handelCreateAccount = async () => {
         setIsLoading(true)
         try {
-         
+
             const { data } = await axios.post(`${process.env.REACT_APP_BACKEND_URL}/api/v1/auth/create-account`, userDetails);
-       
-            if(data.success){
-                 dispatch(loginSuccess(data)); 
-                                navigate("/");
-                                toast.success("Successfully logged in!");
+
+            if (data.success) {
+                dispatch(loginSuccess(data));
+                navigate("/");
+                toast.success("Successfully logged in!");
             }
         } catch (error) {
-            console.log("error", error) 
-        }finally{
+            console.log("error", error)
+        } finally {
             setIsLoading(false)
         }
     }
-   
+
     return (
         <>
 
 
-            <div className="login__page__whole__container">
-                <div>
+            <div className="login__page__whole__container p-7">
+                <div >
                     <div className="login__page__header">Log In</div>
                     <form className="login__form" onSubmit={handleSubmit(onSubmit)}>
                         <div className="form__ele">
@@ -113,7 +120,7 @@ const Login = () => {
                             <input
                                 {...register("phone")}
                                 placeholder="Enter your phone number"
-                                className="w-96"
+                                className="w-80"
                             />
                             {errors.phone && <div className="error__message">{errors.phone.message}</div>}
                         </div>
@@ -122,7 +129,7 @@ const Login = () => {
                             <button
                                 disabled={isLoading}
                                 type="submit"
-                                className="py-2 px-4 flex justify-center items-center button_color_style focus:ring-offset-blue-200 w-96 transition ease-in duration-200 text-center text-base font-semibold shadow-md focus:outline-none focus:ring-2 focus:ring-offset-2 rounded-lg max-w-md"
+                                className="py-2 px-4 flex justify-center items-center button_color_style focus:ring-offset-blue-200 w-80 transition ease-in duration-200 text-center text-base font-semibold shadow-md focus:outline-none focus:ring-2 focus:ring-offset-2 rounded-lg max-w-md"
                             >
                                 {isLoading && (
                                     <svg
@@ -198,7 +205,7 @@ const Login = () => {
                         <input type='text' className='otp_input' placeholder='Enter full name' value={userDetails.name} onChange={(e) => handelOnchangeUserDetails(e, "name")} />
 
                         <button
-                            disabled={userDetails?.name?.length <3 ?? false}
+                            disabled={userDetails?.name?.length < 3 ?? false}
                             onClick={() => handelCreateAccount()}
                             type="submit"
                             className="py-2 px-4 mt-12 flex justify-center items-center bg-blue-600 text-white text-xl focus:ring-offset-blue-200 w-10/12 transition ease-in duration-200 text-center text-base font-semibold shadow-md focus:outline-none focus:ring-2 focus:ring-offset-2 rounded-lg
