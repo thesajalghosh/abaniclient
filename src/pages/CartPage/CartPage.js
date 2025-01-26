@@ -193,6 +193,8 @@ const CartPage = () => {
           `${process.env.REACT_APP_BACKEND_URL}/api/v1/order/create-order`,
           {
             ...bookingDetails,
+            items: cartData,
+            user: user._id,
             amount: price * 100,
             currency: "INR",
             receipt: `receipt#${generate20DigitNumber().toString()}`,
@@ -204,17 +206,19 @@ const CartPage = () => {
             },
           }
         );
-
+        console.log("final_order", final_order)
+       
         const options = {
           key: data?.key,
-          amount: final_order.data.amount,
-          currency: final_order.data.currency,
+          amount: final_order?.data?.order?.totalPrice * 100,
+         currency: "INR",
           name: "The Abani",
           description: "Transaction",
           image: "https://your_logo_url",
-          order_id: final_order.data.id,
+          order_id: final_order?.data?.razorpay_id_for_send,
           handler: async function (response) {
             setPaymentVerifyLoadingModal(true);
+            console.log("response", response)
             try {
               const { data } = await axios.post(
                 `${process.env.REACT_APP_BACKEND_URL}/api/v1/order/verify-payment`,
@@ -222,18 +226,9 @@ const CartPage = () => {
                   order_id: response?.razorpay_order_id,
                   payment_id: response?.razorpay_payment_id,
                   signature: response?.razorpay_signature,
-                  user: user._id,
-                  items: cartData,
-                  address: {
-                    address1: bookingDetails.address1,
-                    address2: bookingDetails.address2,
-                    address3: bookingDetails.address3,
-                    landmark: bookingDetails.landmark,
-                    pincode: bookingDetails.pincode,
-                  },
-                  bookingDate: bookingDetails.bookingDate,
-                  timeSlot: bookingDetails.slot,
-                  paymentMode: bookingDetails.paymentMode,
+                  mongo_order_id: final_order?.data?.order?._id,
+                  items:cartData
+               
                 },
                 {
                   headers: {
@@ -262,8 +257,9 @@ const CartPage = () => {
             color: "#3399cc",
           },
         };
-
+        console.log("options", options)
         const rzp = new window.Razorpay(options);
+        console.log("rzp", rzp)
         rzp.open();
       }
       else{
