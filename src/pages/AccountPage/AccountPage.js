@@ -139,7 +139,6 @@ const AccountPage = () => {
             <div className="accout_page_login_container">
               <div className="without_login_heading">You need to register your account to access full fetures</div>
               <div className="without_login_container">
-                <div className="without_login_label">If you have account then login in now</div>
                 <button onClick={()=>navigate("/login")}>Register now</button>
               </div>
               
