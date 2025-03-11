@@ -26,7 +26,7 @@ const HelpPage = () => {
           <h2>For urgent</h2>
           <div className="urgent_help_phone_email">
               <p>Phone no.</p>
-              <p>+91 833456787</p>
+              <p>+91 9609238676</p>
           </div>
           <div className="urgent_help_phone_email">
               <p>Email</p>

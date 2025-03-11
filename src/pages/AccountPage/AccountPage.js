@@ -137,15 +137,12 @@ const AccountPage = () => {
             </>}
           {isEmpty(user) &&
             <div className="accout_page_login_container">
-              <div className="without_login_heading">You need to login your account to access full fetures</div>
+              <div className="without_login_heading">You need to register your account to access full fetures</div>
               <div className="without_login_container">
                 <div className="without_login_label">If you have account then login in now</div>
-                <button onClick={()=>navigate("/login")}>Login now</button>
+                <button onClick={()=>navigate("/login")}>Register now</button>
               </div>
-              <div className="without_login_container">
-                <div className="without_login_label">If you don't have account then register in now</div>
-                <button onClick={()=>navigate("/register")}>Register now</button>
-              </div>
+              
 
             </div>
           }
