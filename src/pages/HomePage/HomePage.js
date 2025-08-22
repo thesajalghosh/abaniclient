@@ -6,7 +6,7 @@ import CategoryComponent from "../../components/CategoryComponent/CategoryCompon
 import MostBookService from "../../components/MostBookedService/MostBookedService"
 import { useNavigate } from "react-router-dom";
 import { FaFacebook } from "react-icons/fa6";
-import { FaLinkedinIn,FaInstagram  } from "react-icons/fa";
+import { FaLinkedinIn, FaInstagram } from "react-icons/fa";
 import { IoLogoYoutube } from "react-icons/io5";
 
 
@@ -26,9 +26,10 @@ const HomePage = () => {
       <div>Kolkata</div>
     </div> */}
       <div className="home_page_search_box">
-        <div className="seach_box_container">
-          <IoSearch size={21} />
-          <input placeholder="Search any hair service" />
+ <div className="seach_box_container overflow-hidden whitespace-nowrap bg-gradient-to-r from-pink-200 via-yellow-200 to-green-200 p-2 rounded">
+          <p className="animate-marquee text-red-600 font-semibold">
+            Please book any service 24 hours in advance ⏰
+          </p>
         </div>
       </div>
       <div className="home_page_category_componant">
@@ -36,7 +37,7 @@ const HomePage = () => {
       </div>
       <BookCrousel />
       <div className="most_booked_serviced">
-        <MostBookService/>
+        <MostBookService />
       </div>
       <div className="home_page_footer_container">
         <div className="company_name">The Abani</div>
@@ -46,7 +47,7 @@ const HomePage = () => {
             <div className="footer_sub_heading">Company</div>
             <div className="footer_section_element">
               <span>About us</span>
-              <span onClick={()=> navigate("/terms-condition")}>Terms @ condition</span>
+              <span onClick={() => navigate("/terms-condition")}>Terms @ condition</span>
               <span>Privacy policy</span>
               <span>Anti-discrimination policy</span>
               <span>The Abani impact</span>
@@ -66,56 +67,56 @@ const HomePage = () => {
 
         </div>
 
-      <div className="home_page_social_media_container">
-      <div className="footer_social_media mt-5 flex gap-4 justify-center items-center">
-      {/* Facebook */}
-      <div
-        className="w-[40px] h-[40px] bg-gray-500 rounded-lg flex justify-center items-center cursor-pointer"
-        onClick={() =>
-          handleNavigation("https://www.facebook.com/share/QqzPBPnw2hD5RJaa/", true)
-        }
-      >
-        <FaFacebook size={25} />
-      </div>
+        <div className="home_page_social_media_container">
+          <div className="footer_social_media mt-5 flex gap-4 justify-center items-center">
+            {/* Facebook */}
+            <div
+              className="w-[40px] h-[40px] bg-gray-500 rounded-lg flex justify-center items-center cursor-pointer"
+              onClick={() =>
+                handleNavigation("https://www.facebook.com/share/QqzPBPnw2hD5RJaa/", true)
+              }
+            >
+              <FaFacebook size={25} />
+            </div>
 
-      {/* LinkedIn */}
-      <div
-        className="w-[40px] h-[40px] bg-gray-500 rounded-lg flex justify-center items-center cursor-pointer"
-        onClick={() =>
-          handleNavigation("https://www.linkedin.com/", true)
-        }
-      >
-        <FaLinkedinIn size={25} />
-      </div>
+            {/* LinkedIn */}
+            <div
+              className="w-[40px] h-[40px] bg-gray-500 rounded-lg flex justify-center items-center cursor-pointer"
+              onClick={() =>
+                handleNavigation("https://www.linkedin.com/", true)
+              }
+            >
+              <FaLinkedinIn size={25} />
+            </div>
 
-      {/* Instagram */}
-      <div
-        className="w-[40px] h-[40px] bg-gray-500 rounded-lg flex justify-center items-center cursor-pointer"
-        onClick={() =>
-          handleNavigation(
-            "https://www.instagram.com/theabani58/",
-            true
-          )
-        }
-      >
-        <FaInstagram size={25} />
-      </div>
+            {/* Instagram */}
+            <div
+              className="w-[40px] h-[40px] bg-gray-500 rounded-lg flex justify-center items-center cursor-pointer"
+              onClick={() =>
+                handleNavigation(
+                  "https://www.instagram.com/theabani58/",
+                  true
+                )
+              }
+            >
+              <FaInstagram size={25} />
+            </div>
 
-      {/* YouTube */}
-      <div
-        className="w-[40px] h-[40px] bg-gray-500 rounded-lg flex justify-center items-center cursor-pointer"
-        onClick={() =>
-          handleNavigation(
-            "https://youtube.com/@theabani9891?si=O_CqYk-M69imQLif",
-            true
-          )
-        }
-      >
-        <IoLogoYoutube size={25} />
-      </div>
-    </div>
-     
-      </div>
+            {/* YouTube */}
+            <div
+              className="w-[40px] h-[40px] bg-gray-500 rounded-lg flex justify-center items-center cursor-pointer"
+              onClick={() =>
+                handleNavigation(
+                  "https://youtube.com/@theabani9891?si=O_CqYk-M69imQLif",
+                  true
+                )
+              }
+            >
+              <IoLogoYoutube size={25} />
+            </div>
+          </div>
+
+        </div>
       </div>
     </div>
   );
